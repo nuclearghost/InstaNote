@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F38BDD181923AB9B006BF8E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD171923AB9B006BF8E1 /* Foundation.framework */; };
+		F38BDD1A1923AB9B006BF8E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD191923AB9B006BF8E1 /* CoreGraphics.framework */; };
+		F38BDD1C1923AB9B006BF8E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD1B1923AB9B006BF8E1 /* UIKit.framework */; };
+		F38BDD221923AB9B006BF8E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F38BDD201923AB9B006BF8E1 /* InfoPlist.strings */; };
+		F38BDD241923AB9B006BF8E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F38BDD231923AB9B006BF8E1 /* main.m */; };
+		F38BDD281923AB9B006BF8E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F38BDD271923AB9B006BF8E1 /* AppDelegate.m */; };
+		F38BDD2A1923AB9B006BF8E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F38BDD291923AB9B006BF8E1 /* Images.xcassets */; };
+		F38BDD311923AB9B006BF8E1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD301923AB9B006BF8E1 /* XCTest.framework */; };
+		F38BDD321923AB9B006BF8E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD171923AB9B006BF8E1 /* Foundation.framework */; };
+		F38BDD331923AB9B006BF8E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD1B1923AB9B006BF8E1 /* UIKit.framework */; };
+		F38BDD3B1923AB9B006BF8E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F38BDD391923AB9B006BF8E1 /* InfoPlist.strings */; };
+		F38BDD3D1923AB9B006BF8E1 /* InstaNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F38BDD3C1923AB9B006BF8E1 /* InstaNoteTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F38BDD341923AB9B006BF8E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F38BDD0C1923AB9A006BF8E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F38BDD131923AB9B006BF8E1;
+			remoteInfo = InstaNote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F38BDD141923AB9B006BF8E1 /* InstaNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F38BDD171923AB9B006BF8E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F38BDD191923AB9B006BF8E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F38BDD1B1923AB9B006BF8E1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F38BDD1F1923AB9B006BF8E1 /* InstaNote-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InstaNote-Info.plist"; sourceTree = "<group>"; };
+		F38BDD211923AB9B006BF8E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F38BDD231923AB9B006BF8E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F38BDD251923AB9B006BF8E1 /* InstaNote-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InstaNote-Prefix.pch"; sourceTree = "<group>"; };
+		F38BDD261923AB9B006BF8E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F38BDD271923AB9B006BF8E1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F38BDD291923AB9B006BF8E1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F38BDD2F1923AB9B006BF8E1 /* InstaNoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaNoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F38BDD301923AB9B006BF8E1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F38BDD381923AB9B006BF8E1 /* InstaNoteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InstaNoteTests-Info.plist"; sourceTree = "<group>"; };
+		F38BDD3A1923AB9B006BF8E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F38BDD3C1923AB9B006BF8E1 /* InstaNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstaNoteTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F38BDD111923AB9B006BF8E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F38BDD1A1923AB9B006BF8E1 /* CoreGraphics.framework in Frameworks */,
+				F38BDD1C1923AB9B006BF8E1 /* UIKit.framework in Frameworks */,
+				F38BDD181923AB9B006BF8E1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F38BDD2C1923AB9B006BF8E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F38BDD311923AB9B006BF8E1 /* XCTest.framework in Frameworks */,
+				F38BDD331923AB9B006BF8E1 /* UIKit.framework in Frameworks */,
+				F38BDD321923AB9B006BF8E1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F38BDD0B1923AB9A006BF8E1 = {
+			isa = PBXGroup;
+			children = (
+				F38BDD1D1923AB9B006BF8E1 /* InstaNote */,
+				F38BDD361923AB9B006BF8E1 /* InstaNoteTests */,
+				F38BDD161923AB9B006BF8E1 /* Frameworks */,
+				F38BDD151923AB9B006BF8E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F38BDD151923AB9B006BF8E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F38BDD141923AB9B006BF8E1 /* InstaNote.app */,
+				F38BDD2F1923AB9B006BF8E1 /* InstaNoteTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F38BDD161923AB9B006BF8E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F38BDD171923AB9B006BF8E1 /* Foundation.framework */,
+				F38BDD191923AB9B006BF8E1 /* CoreGraphics.framework */,
+				F38BDD1B1923AB9B006BF8E1 /* UIKit.framework */,
+				F38BDD301923AB9B006BF8E1 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F38BDD1D1923AB9B006BF8E1 /* InstaNote */ = {
+			isa = PBXGroup;
+			children = (
+				F38BDD261923AB9B006BF8E1 /* AppDelegate.h */,
+				F38BDD271923AB9B006BF8E1 /* AppDelegate.m */,
+				F38BDD291923AB9B006BF8E1 /* Images.xcassets */,
+				F38BDD1E1923AB9B006BF8E1 /* Supporting Files */,
+			);
+			path = InstaNote;
+			sourceTree = "<group>";
+		};
+		F38BDD1E1923AB9B006BF8E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F38BDD1F1923AB9B006BF8E1 /* InstaNote-Info.plist */,
+				F38BDD201923AB9B006BF8E1 /* InfoPlist.strings */,
+				F38BDD231923AB9B006BF8E1 /* main.m */,
+				F38BDD251923AB9B006BF8E1 /* InstaNote-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F38BDD361923AB9B006BF8E1 /* InstaNoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				F38BDD3C1923AB9B006BF8E1 /* InstaNoteTests.m */,
+				F38BDD371923AB9B006BF8E1 /* Supporting Files */,
+			);
+			path = InstaNoteTests;
+			sourceTree = "<group>";
+		};
+		F38BDD371923AB9B006BF8E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F38BDD381923AB9B006BF8E1 /* InstaNoteTests-Info.plist */,
+				F38BDD391923AB9B006BF8E1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F38BDD131923AB9B006BF8E1 /* InstaNote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F38BDD401923AB9B006BF8E1 /* Build configuration list for PBXNativeTarget "InstaNote" */;
+			buildPhases = (
+				F38BDD101923AB9B006BF8E1 /* Sources */,
+				F38BDD111923AB9B006BF8E1 /* Frameworks */,
+				F38BDD121923AB9B006BF8E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InstaNote;
+			productName = InstaNote;
+			productReference = F38BDD141923AB9B006BF8E1 /* InstaNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F38BDD2E1923AB9B006BF8E1 /* InstaNoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F38BDD431923AB9B006BF8E1 /* Build configuration list for PBXNativeTarget "InstaNoteTests" */;
+			buildPhases = (
+				F38BDD2B1923AB9B006BF8E1 /* Sources */,
+				F38BDD2C1923AB9B006BF8E1 /* Frameworks */,
+				F38BDD2D1923AB9B006BF8E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F38BDD351923AB9B006BF8E1 /* PBXTargetDependency */,
+			);
+			name = InstaNoteTests;
+			productName = InstaNoteTests;
+			productReference = F38BDD2F1923AB9B006BF8E1 /* InstaNoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F38BDD0C1923AB9A006BF8E1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Mark Meyer";
+				TargetAttributes = {
+					F38BDD2E1923AB9B006BF8E1 = {
+						TestTargetID = F38BDD131923AB9B006BF8E1;
+					};
+				};
+			};
+			buildConfigurationList = F38BDD0F1923AB9A006BF8E1 /* Build configuration list for PBXProject "InstaNote" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F38BDD0B1923AB9A006BF8E1;
+			productRefGroup = F38BDD151923AB9B006BF8E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F38BDD131923AB9B006BF8E1 /* InstaNote */,
+				F38BDD2E1923AB9B006BF8E1 /* InstaNoteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F38BDD121923AB9B006BF8E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F38BDD221923AB9B006BF8E1 /* InfoPlist.strings in Resources */,
+				F38BDD2A1923AB9B006BF8E1 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F38BDD2D1923AB9B006BF8E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F38BDD3B1923AB9B006BF8E1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F38BDD101923AB9B006BF8E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F38BDD281923AB9B006BF8E1 /* AppDelegate.m in Sources */,
+				F38BDD241923AB9B006BF8E1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F38BDD2B1923AB9B006BF8E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F38BDD3D1923AB9B006BF8E1 /* InstaNoteTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F38BDD351923AB9B006BF8E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F38BDD131923AB9B006BF8E1 /* InstaNote */;
+			targetProxy = F38BDD341923AB9B006BF8E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F38BDD201923AB9B006BF8E1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F38BDD211923AB9B006BF8E1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F38BDD391923AB9B006BF8E1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F38BDD3A1923AB9B006BF8E1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F38BDD3E1923AB9B006BF8E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F38BDD3F1923AB9B006BF8E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F38BDD411923AB9B006BF8E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "InstaNote/InstaNote-Prefix.pch";
+				INFOPLIST_FILE = "InstaNote/InstaNote-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F38BDD421923AB9B006BF8E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "InstaNote/InstaNote-Prefix.pch";
+				INFOPLIST_FILE = "InstaNote/InstaNote-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F38BDD441923AB9B006BF8E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/InstaNote.app/InstaNote";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "InstaNote/InstaNote-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "InstaNoteTests/InstaNoteTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F38BDD451923AB9B006BF8E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/InstaNote.app/InstaNote";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "InstaNote/InstaNote-Prefix.pch";
+				INFOPLIST_FILE = "InstaNoteTests/InstaNoteTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F38BDD0F1923AB9A006BF8E1 /* Build configuration list for PBXProject "InstaNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F38BDD3E1923AB9B006BF8E1 /* Debug */,
+				F38BDD3F1923AB9B006BF8E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F38BDD401923AB9B006BF8E1 /* Build configuration list for PBXNativeTarget "InstaNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F38BDD411923AB9B006BF8E1 /* Debug */,
+				F38BDD421923AB9B006BF8E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F38BDD431923AB9B006BF8E1 /* Build configuration list for PBXNativeTarget "InstaNoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F38BDD441923AB9B006BF8E1 /* Debug */,
+				F38BDD451923AB9B006BF8E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F38BDD0C1923AB9A006BF8E1 /* Project object */;
+}
