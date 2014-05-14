@@ -19,6 +19,15 @@
 		F38BDD331923AB9B006BF8E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD1B1923AB9B006BF8E1 /* UIKit.framework */; };
 		F38BDD3B1923AB9B006BF8E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F38BDD391923AB9B006BF8E1 /* InfoPlist.strings */; };
 		F38BDD3D1923AB9B006BF8E1 /* InstaNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F38BDD3C1923AB9B006BF8E1 /* InstaNoteTests.m */; };
+		F38BDD491923ABF2006BF8E1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD481923ABF2006BF8E1 /* CFNetwork.framework */; };
+		F38BDD4B1923ABFB006BF8E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD4A1923ABFB006BF8E1 /* Security.framework */; };
+		F38BDD4D1923AC09006BF8E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD4C1923AC09006BF8E1 /* SystemConfiguration.framework */; };
+		F38BDD4F1923AC14006BF8E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD4E1923AC14006BF8E1 /* QuartzCore.framework */; };
+		F38BDD511923AC20006BF8E1 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD501923AC20006BF8E1 /* libc++.dylib */; };
+		F38BDD521923AC49006BF8E1 /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38BDD461923ABD5006BF8E1 /* Dropbox.framework */; };
+		F38BDD541923AD3D006BF8E1 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F38BDD531923AD3D006BF8E1 /* Storyboard.storyboard */; };
+		F38BDD561923B467006BF8E1 /* AccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F38BDD551923B467006BF8E1 /* AccessoryView.xib */; };
+		F38BDD591923B50D006BF8E1 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F38BDD581923B50D006BF8E1 /* NoteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +57,16 @@
 		F38BDD381923AB9B006BF8E1 /* InstaNoteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InstaNoteTests-Info.plist"; sourceTree = "<group>"; };
 		F38BDD3A1923AB9B006BF8E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F38BDD3C1923AB9B006BF8E1 /* InstaNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstaNoteTests.m; sourceTree = "<group>"; };
+		F38BDD461923ABD5006BF8E1 /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Dropbox.framework; sourceTree = "<group>"; };
+		F38BDD481923ABF2006BF8E1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F38BDD4A1923ABFB006BF8E1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F38BDD4C1923AC09006BF8E1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F38BDD4E1923AC14006BF8E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F38BDD501923AC20006BF8E1 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		F38BDD531923AD3D006BF8E1 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		F38BDD551923B467006BF8E1 /* AccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccessoryView.xib; sourceTree = "<group>"; };
+		F38BDD571923B50D006BF8E1 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
+		F38BDD581923B50D006BF8E1 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +74,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F38BDD521923AC49006BF8E1 /* Dropbox.framework in Frameworks */,
+				F38BDD511923AC20006BF8E1 /* libc++.dylib in Frameworks */,
+				F38BDD4F1923AC14006BF8E1 /* QuartzCore.framework in Frameworks */,
+				F38BDD4D1923AC09006BF8E1 /* SystemConfiguration.framework in Frameworks */,
+				F38BDD4B1923ABFB006BF8E1 /* Security.framework in Frameworks */,
+				F38BDD491923ABF2006BF8E1 /* CFNetwork.framework in Frameworks */,
 				F38BDD1A1923AB9B006BF8E1 /* CoreGraphics.framework in Frameworks */,
 				F38BDD1C1923AB9B006BF8E1 /* UIKit.framework in Frameworks */,
 				F38BDD181923AB9B006BF8E1 /* Foundation.framework in Frameworks */,
@@ -96,6 +121,12 @@
 		F38BDD161923AB9B006BF8E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F38BDD501923AC20006BF8E1 /* libc++.dylib */,
+				F38BDD4E1923AC14006BF8E1 /* QuartzCore.framework */,
+				F38BDD4C1923AC09006BF8E1 /* SystemConfiguration.framework */,
+				F38BDD4A1923ABFB006BF8E1 /* Security.framework */,
+				F38BDD481923ABF2006BF8E1 /* CFNetwork.framework */,
+				F38BDD461923ABD5006BF8E1 /* Dropbox.framework */,
 				F38BDD171923AB9B006BF8E1 /* Foundation.framework */,
 				F38BDD191923AB9B006BF8E1 /* CoreGraphics.framework */,
 				F38BDD1B1923AB9B006BF8E1 /* UIKit.framework */,
@@ -110,7 +141,11 @@
 				F38BDD261923AB9B006BF8E1 /* AppDelegate.h */,
 				F38BDD271923AB9B006BF8E1 /* AppDelegate.m */,
 				F38BDD291923AB9B006BF8E1 /* Images.xcassets */,
+				F38BDD551923B467006BF8E1 /* AccessoryView.xib */,
 				F38BDD1E1923AB9B006BF8E1 /* Supporting Files */,
+				F38BDD531923AD3D006BF8E1 /* Storyboard.storyboard */,
+				F38BDD571923B50D006BF8E1 /* NoteViewController.h */,
+				F38BDD581923B50D006BF8E1 /* NoteViewController.m */,
 			);
 			path = InstaNote;
 			sourceTree = "<group>";
@@ -220,7 +255,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F38BDD221923AB9B006BF8E1 /* InfoPlist.strings in Resources */,
+				F38BDD561923B467006BF8E1 /* AccessoryView.xib in Resources */,
 				F38BDD2A1923AB9B006BF8E1 /* Images.xcassets in Resources */,
+				F38BDD541923AD3D006BF8E1 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F38BDD281923AB9B006BF8E1 /* AppDelegate.m in Sources */,
+				F38BDD591923B50D006BF8E1 /* NoteViewController.m in Sources */,
 				F38BDD241923AB9B006BF8E1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +395,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "InstaNote/InstaNote-Prefix.pch";
 				INFOPLIST_FILE = "InstaNote/InstaNote-Info.plist";
@@ -370,6 +412,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "InstaNote/InstaNote-Prefix.pch";
 				INFOPLIST_FILE = "InstaNote/InstaNote-Info.plist";
