@@ -7,6 +7,7 @@
 //
 
 #import "NoteViewController.h"
+#import "DBManager.h"
 
 @interface NoteViewController ()
 
@@ -37,8 +38,19 @@
     [doneButton addTarget:self action:@selector(doneTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.textView setInputAccessoryView:accessoryView];
+    self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
-    // Do any additional setup after loading the view.
+    if (![[DBManager sharedManager] accountAvailable]) {
+        [[[UIAlertView alloc]
+          initWithTitle:@"Link Account" message:@"You must link your dropbox account to proceed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]
+         show];
+    } else {
+        [self.textView becomeFirstResponder];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,6 +59,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [[DBManager sharedManager] initializeAccountLinkFromView:self.navigationController];
+}
 /*
 #pragma mark - Navigation
 
@@ -60,6 +75,9 @@
 
 - (void)cameraTapped:(id)sender {
     NSLog(@"cameraTapped");
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[DBCameraContainer alloc] initWithDelegate:self]];
+    [nav setNavigationBarHidden:YES];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)doneTapped:(id)sender {
@@ -70,5 +88,15 @@
 - (IBAction)listTapped:(id)sender {
     NSLog(@"listTapped");
     [self performSegueWithIdentifier:@"listSegue" sender:self];
+}
+
+#pragma mark - DBCameraViewControllerDelegate
+
+- (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
+{
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:image];
+    [imgView setFrame:CGRectMake(0, 0, 320, 320)];
+    [self.textView addSubview:imgView];
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 @end

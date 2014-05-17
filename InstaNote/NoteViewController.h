@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NoteViewController : UIViewController <UITextViewDelegate>
+#import "DBCameraViewController.h"
+#import "DBCameraContainer.h"
+
+@interface NoteViewController : UIViewController <UITextViewDelegate, DBCameraViewControllerDelegate>
 
 - (IBAction)listTapped:(id)sender;
 

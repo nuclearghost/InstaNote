@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "DBManager.h"
 
 #import <Dropbox/Dropbox.h>
 
@@ -14,16 +15,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    DBAccountManager *accountManager =
-    [[DBAccountManager alloc] initWithAppKey:@"qcz9ufcp4js53qh" secret:@"qb18w7dktw2vv7b"];
-    [DBAccountManager setSharedManager:accountManager];
+    [DBManager sharedManager];
+    return YES;
+}
 
-    /*
-    DBAccount *account = [accountManager.linkedAccounts objectAtIndex:0];
-    if (account) {
-        DBFilesystem *filesystem = [[DBFilesystem alloc] initWithAccount:account];
-    }
-     */
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    [[DBManager sharedManager] handleUrl:url];
     return YES;
 }
 
