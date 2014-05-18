@@ -60,7 +60,23 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    [[DBManager sharedManager] initializeAccountLinkFromView:self.navigationController];
+    if (alertView.tag == 12) {
+        if (buttonIndex == 1) {
+            UITextField *textfield = [alertView textFieldAtIndex:0];
+            NSLog(@"filename: %@", textfield.text);
+            [[DBManager sharedManager] creatFile:textfield.text completion:^(BOOL completed, DBFile *file) {
+                if (completed) {
+                    self.file = file;
+                    self.navigationItem.title = [self.file.info.path name];
+                    [self.file writeString:self.textView.text error:nil];
+                } else {
+                    //TODO alert or something
+                }
+            }];
+        }
+    } else {
+        [[DBManager sharedManager] initializeAccountLinkFromView:self.navigationController];
+    }
 }
 /*
 #pragma mark - Navigation
@@ -88,6 +104,23 @@
 - (IBAction)listTapped:(id)sender {
     NSLog(@"listTapped");
     [self performSegueWithIdentifier:@"listSegue" sender:self];
+}
+
+- (IBAction)cloudTapped:(id)sender {
+    NSLog(@"cloudTapped");
+    //File exists so save
+    if (self.file) {
+        [self.file writeString:self.textView.text error:nil];
+    } else { //Create new file
+        UIAlertView *av =
+        [[UIAlertView alloc]
+         initWithTitle:@"Filename" message:@"Please enter a filename" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+        av.alertViewStyle = UIAlertViewStylePlainTextInput;
+        av.tag = 12;
+        
+        [av addButtonWithTitle:@"Submit"];
+        [av show];
+    }
 }
 
 #pragma mark - DBCameraViewControllerDelegate

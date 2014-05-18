@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Dropbox/Dropbox.h>
 
 #import "DBCameraViewController.h"
 #import "DBCameraContainer.h"
@@ -14,7 +15,9 @@
 @interface NoteViewController : UIViewController <UITextViewDelegate, DBCameraViewControllerDelegate>
 
 - (IBAction)listTapped:(id)sender;
+- (IBAction)cloudTapped:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) DBFile *file;
 
 @end

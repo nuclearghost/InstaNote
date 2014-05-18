@@ -80,5 +80,16 @@
     NSLog(@"accountUpdated %@", account);
 }
 
+-(void)creatFile:(NSString *)filename completion:(void (^)(BOOL, DBFile*))completionBloc {
+    NSString *noteFilename = [NSString stringWithFormat:@"%@.txt", filename];
+    DBPath *path = [[DBPath root] childPath:noteFilename];
+    DBFile *file = [self.fs createFile:path error:nil];
+    
+    if (file) {
+        completionBloc(YES, file);
+    } else {
+        completionBloc(NO, nil);
+    }
+}
 
 @end
