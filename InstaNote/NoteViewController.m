@@ -41,6 +41,15 @@
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.file) {
+        self.navigationItem.title = self.file.info.path.name;
+        self.textView.text = [self.file readString:nil];
+    }
+}
+
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -67,7 +76,7 @@
             [[DBManager sharedManager] creatFile:textfield.text completion:^(BOOL completed, DBFile *file) {
                 if (completed) {
                     self.file = file;
-                    self.navigationItem.title = [self.file.info.path name];
+                    self.navigationItem.title = self.file.info.path.name;
                     [self.file writeString:self.textView.text error:nil];
                 } else {
                     //TODO alert or something

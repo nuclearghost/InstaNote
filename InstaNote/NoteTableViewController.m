@@ -10,6 +10,9 @@
 
 @interface NoteTableViewController ()
 
+@property (nonatomic, assign) BOOL loadingFiles;
+@property (strong, nonatomic) NSMutableArray *contents;
+
 @end
 
 @implementation NoteTableViewController
@@ -34,6 +37,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self loadFiles];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -49,30 +57,30 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.contents count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    DBFileInfo *info = [_contents objectAtIndex:[indexPath row]];
+    cell.textLabel.text = [info.path name];
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ((NSInteger)[_contents count] <= [indexPath row]) return;
+    
+    DBFileInfo *info = [_contents objectAtIndex:[indexPath row]];
+    DBFile *file = [[[DBManager sharedManager] getFileSystem] openFile:info.path error:nil];
+
+    
+    [self performSegueWithIdentifier:@"noteSegue" sender:file];
 }
-*/
 
 /*
 // Override to support editing the table view.
@@ -87,31 +95,36 @@
 }
 */
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"noteSegue"]) {
+        NoteViewController *nvc = (NoteViewController*)[segue destinationViewController];
+        nvc.file = (DBFile*)sender;
+    }
 }
-*/
 
+
+- (void)loadFiles {
+    if (_loadingFiles) return;
+    _loadingFiles = YES;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^() {
+        NSArray *immContents = [[[DBManager sharedManager] getFileSystem] listFolder:[DBPath root] error:nil];
+        NSMutableArray *mContents = [NSMutableArray arrayWithArray:immContents];
+        //[mContents sortUsingFunction:sortFileInfos context:NULL];
+        dispatch_async(dispatch_get_main_queue(), ^() {
+            self.contents = mContents;
+            _loadingFiles = NO;
+            [self.tableView reloadData];
+        });
+    });
+}
+- (IBAction)addTapped:(id)sender {
+    NSLog(@"addTapped");
+    [self performSegueWithIdentifier:@"noteSegue" sender:nil];
+}
 @end

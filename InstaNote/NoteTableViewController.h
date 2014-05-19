@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Dropbox/Dropbox.h>
+
+#import "DBManager.h"
+#import "NoteViewController.h"
 
 @interface NoteTableViewController : UITableViewController
+
+- (IBAction)addTapped:(id)sender;
 
 @end
