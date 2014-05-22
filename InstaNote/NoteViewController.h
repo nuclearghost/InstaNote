@@ -19,5 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) DBFile *file;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *listButton;
 
 @end

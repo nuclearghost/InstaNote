@@ -39,6 +39,9 @@
     UIButton *cameraButton = (UIButton*)[accessoryView viewWithTag:200];
     UIButton *doneButton = (UIButton*)[accessoryView viewWithTag:300];
     
+    doneButton.titleLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Done", nil)];
+    self.listButton.title = [NSString stringWithFormat:NSLocalizedString(@"List", nil)];
+    
     [cameraButton addTarget:self action:@selector(cameraTapped:) forControlEvents:UIControlEventTouchUpInside];
     [doneButton addTarget:self action:@selector(doneTapped:) forControlEvents:UIControlEventTouchUpInside];
     

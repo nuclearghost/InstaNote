@@ -42,6 +42,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="listButton" destination="toe-MY-NoJ" id="xWk-cm-jap"/>
                         <outlet property="textView" destination="4Rd-FY-trO" id="gsa-tH-SAZ"/>
                         <segue destination="yrv-YQ-5hB" kind="push" identifier="listSegue" id="oeL-Ka-Z0U"/>
                     </connections>
