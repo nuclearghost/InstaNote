@@ -15,5 +15,6 @@
 @interface NoteTableViewController : UITableViewController
 
 - (IBAction)addTapped:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 @end

@@ -42,6 +42,9 @@
     doneButton.titleLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Done", nil)];
     self.listButton.title = [NSString stringWithFormat:NSLocalizedString(@"List", nil)];
     
+    [self.listButton setAccessibilityLabel:NSLocalizedString(@"List", nil)];
+    [self.cloudButton setAccessibilityLabel:NSLocalizedString(@"Cloud", nil)];
+    
     [cameraButton addTarget:self action:@selector(cameraTapped:) forControlEvents:UIControlEventTouchUpInside];
     [doneButton addTarget:self action:@selector(doneTapped:) forControlEvents:UIControlEventTouchUpInside];
     
