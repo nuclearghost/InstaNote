@@ -9,7 +9,12 @@
 #import "NoteViewController.h"
 #import "DBManager.h"
 
+#import <EventKit/EventKit.h>
+
 @interface NoteViewController ()
+
+@property (strong,nonatomic) EKEventStore *store;
+@property (strong,nonatomic) NSRegularExpression *regex;
 
 @end
 
@@ -39,6 +44,11 @@
     
     [self.textView setInputAccessoryView:accessoryView];
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    self.regex = [NSRegularExpression
+                  regularExpressionWithPattern:@"TODO:"
+                  options:NSRegularExpressionCaseInsensitive
+                  error:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -88,15 +98,15 @@
     }
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (void)cameraTapped:(id)sender {
     NSLog(@"cameraTapped");
@@ -117,19 +127,59 @@
 
 - (IBAction)cloudTapped:(id)sender {
     NSLog(@"cloudTapped");
-    //File exists so save
-    if (self.file) {
-        [self.file writeString:self.textView.text error:nil];
-    } else { //Create new file
-        UIAlertView *av =
-        [[UIAlertView alloc]
-         initWithTitle:@"Filename" message:@"Please enter a filename" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-        av.alertViewStyle = UIAlertViewStylePlainTextInput;
-        av.tag = 12;
+    if ([self.textView.text length] > 0) {
+        [self checkForToDoInString:self.textView.text];
         
-        [av addButtonWithTitle:@"Submit"];
-        [av show];
+        if (self.file) {
+            [self.file writeString:self.textView.text error:nil];
+        } else { //Create new file
+            UIAlertView *av =
+            [[UIAlertView alloc]
+             initWithTitle:@"Filename" message:@"Please enter a filename" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+            av.alertViewStyle = UIAlertViewStylePlainTextInput;
+            av.tag = 12;
+            
+            [av addButtonWithTitle:@"Submit"];
+            [av show];
+        }
     }
+}
+
+- (void)checkForToDoInString:(NSString*)string {
+    [self.regex enumerateMatchesInString:string options:0
+                                   range:NSMakeRange(0, 5)
+                              usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
+                                  if(!self.store) {
+                                      self.store = [[EKEventStore alloc] init];
+                                      [self.store requestAccessToEntityType:EKEntityTypeReminder
+                                                                 completion:^(BOOL granted, NSError *error) {
+                                                                     if (granted) {
+                                                                         [self storeReminderString:string];
+                                                                     }
+                                                                 }];
+                                  } else if ([EKEventStore authorizationStatusForEntityType:EKEntityTypeReminder] == EKAuthorizationStatusAuthorized) {
+                                      [self storeReminderString:string];
+                                  }
+                              }];
+}
+
+- (void)storeReminderString:(NSString*)string {
+    NSLog(@"Storing reminder %@",string);
+    
+    EKReminder *reminder = [EKReminder reminderWithEventStore:self.store];
+    [reminder setTitle: [string substringWithRange:NSMakeRange(5, [string length] - 5)]];
+    EKCalendar *defaultReminderList = [self.store defaultCalendarForNewReminders];
+    
+    [reminder setCalendar:defaultReminderList];
+    
+    NSError *error = nil;
+    BOOL success = [self.store saveReminder:reminder
+                                     commit:YES
+                                      error:&error];
+    if (!success) {
+        NSLog(@"Error saving reminder: %@", [error localizedDescription]);
+    }
+   
 }
 
 #pragma mark - DBCameraViewControllerDelegate
