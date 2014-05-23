@@ -18,6 +18,6 @@
 -(BOOL)accountAvailable;
 -(void)initializeAccountLinkFromView:(UIViewController*)view;
 
--(void)creatFile:(NSString *)filename completion:(void (^)(BOOL, DBFile*))completionBlock;
+-(void)creatFile:(NSString *)filename withExtension:(NSString *)extension completion:(void (^)(BOOL, DBFile*))completionBloc;
 
 @end

@@ -15,6 +15,7 @@
 
 @property (strong,nonatomic) EKEventStore *store;
 @property (strong,nonatomic) NSRegularExpression *regex;
+@property BOOL pictureMode;
 
 @end
 
@@ -55,6 +56,10 @@
                   regularExpressionWithPattern:@"TODO:"
                   options:NSRegularExpressionCaseInsensitive
                   error:nil];
+    
+    self.pictureMode = NO;
+    self.imgView.hidden = YES;
+    self.captionField.hidden = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -62,8 +67,21 @@
     
     if (self.file) {
         self.navigationItem.title = self.file.info.path.name;
-        self.textView.text = [self.file readString:nil];
+        NSString *extension = [self.file.info.path.name substringFromIndex:([self.file.info.path.name length] - 3)];
+        if ([extension isEqualToString:@"txt"]) {
+            self.textView.text = [self.file readString:nil];
+            self.pictureMode = NO;
+            self.imgView.hidden = YES;
+            self.captionField.hidden = YES;
+        } else {
+            self.imgView.image = [[UIImage alloc] initWithData:[self.file readData:nil]];
+            self.pictureMode = YES;
+            self.imgView.hidden = NO;
+            self.captionField.hidden = NO;
+            self.textView.hidden = YES;
+        }
     }
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -73,27 +91,43 @@
         [[[UIAlertView alloc]
           initWithTitle:@"Link Account" message:@"You must link your dropbox account to proceed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]
          show];
+    } else if (self.pictureMode) {
+        [self.captionField becomeFirstResponder];
     } else {
         [self.textView becomeFirstResponder];
     }
 }
 
+-(void) viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if (self.file) {
+        [self.file close];
+    }
+        
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark Alert View
+
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 12) {
         if (buttonIndex == 1) {
             UITextField *textfield = [alertView textFieldAtIndex:0];
             NSLog(@"filename: %@", textfield.text);
-            [[DBManager sharedManager] creatFile:textfield.text completion:^(BOOL completed, DBFile *file) {
+            [[DBManager sharedManager] creatFile:textfield.text withExtension:self.pictureMode ? @"jpg" : @"txt" completion:^(BOOL completed, DBFile *file) {
                 if (completed) {
                     self.file = file;
                     self.navigationItem.title = self.file.info.path.name;
-                    [self.file writeString:self.textView.text error:nil];
+                    if (self.pictureMode) {
+                        [self.file writeData:UIImageJPEGRepresentation(self.imgView.image, 0.7) error:nil];
+                    } else {
+                        [self.file writeString:self.textView.text error:nil];
+                    }
                 } else {
                     //TODO alert or something
                 }
@@ -102,6 +136,12 @@
     } else {
         [[DBManager sharedManager] initializeAccountLinkFromView:self.navigationController];
     }
+}
+
+#pragma mark UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"caption done tapped");
+    return YES;
 }
 /*
  #pragma mark - Navigation
@@ -116,6 +156,8 @@
 
 - (void)cameraTapped:(id)sender {
     NSLog(@"cameraTapped");
+    [self.textView endEditing:YES];
+    self.pictureMode = YES;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[DBCameraContainer alloc] initWithDelegate:self]];
     [nav setNavigationBarHidden:YES];
     [self presentViewController:nav animated:YES completion:nil];
@@ -133,20 +175,22 @@
 
 - (IBAction)cloudTapped:(id)sender {
     NSLog(@"cloudTapped");
-    if ([self.textView.text length] > 0) {
-        [self checkForToDoInString:self.textView.text];
-        
+    if (self.pictureMode) {
+        [self overlayText];
         if (self.file) {
-            [self.file writeString:self.textView.text error:nil];
-        } else { //Create new file
-            UIAlertView *av =
-            [[UIAlertView alloc]
-             initWithTitle:@"Filename" message:@"Please enter a filename" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-            av.alertViewStyle = UIAlertViewStylePlainTextInput;
-            av.tag = 12;
+            [self.file writeData:UIImageJPEGRepresentation(self.imgView.image, 0.7) error:nil];
+        } else {
+            [self alertForFilename];
+        }
+    } else {
+        if ([self.textView.text length] > 0) {
+            [self checkForToDoInString:self.textView.text];
             
-            [av addButtonWithTitle:@"Submit"];
-            [av show];
+            if (self.file) {
+                [self.file writeString:self.textView.text error:nil];
+            } else { //Create new file
+                [self alertForFilename];
+            }
         }
     }
 }
@@ -185,16 +229,48 @@
     if (!success) {
         NSLog(@"Error saving reminder: %@", [error localizedDescription]);
     }
-   
+}
+
+//From this SO question http://stackoverflow.com/questions/6992830/how-to-write-text-on-image-in-objective-c-iphone
+
+- (void)overlayText {
+    if (self.captionField.text.length > 0) {
+        UIFont *font = [UIFont systemFontOfSize:92];
+        UIGraphicsBeginImageContext(self.imgView.image.size);
+        [self.imgView.image drawInRect:CGRectMake(0,0, self.imgView.image.size.width, self.imgView.image.size.height)];
+        CGRect rect = CGRectMake(0, 0, self.imgView.image.size.width, self.imgView.image.size.height);
+        [self.captionField.text drawInRect:CGRectIntegral(rect) withAttributes:@{NSFontAttributeName: font,
+                                                                                 NSForegroundColorAttributeName: [UIColor whiteColor]}];
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        self.imgView.image = newImage;
+    }
+}
+
+-(void)alertForFilename {
+    UIAlertView *av =
+    [[UIAlertView alloc]
+     initWithTitle:@"Filename" message:@"Please enter a filename" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    av.alertViewStyle = UIAlertViewStylePlainTextInput;
+    av.tag = 12;
+    
+    [av addButtonWithTitle:@"Submit"];
+    [av show];
 }
 
 #pragma mark - DBCameraViewControllerDelegate
 
 - (void) captureImageDidFinish:(UIImage *)image withMetadata:(NSDictionary *)metadata
 {
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:image];
-    [imgView setFrame:CGRectMake(0, 0, 320, 320)];
-    [self.textView addSubview:imgView];
+    self.imgView.image = image;
+    
+    self.textView.hidden = YES;
+    
+    self.imgView.hidden = NO;
+    self.captionField.hidden = NO;
+    [self.captionField becomeFirstResponder];
+    
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 @end

@@ -27,6 +27,16 @@
                                     <outlet property="delegate" destination="otQ-Go-TeQ" id="D2e-KK-zDi"/>
                                 </connections>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cameraGridSelected" translatesAutoresizingMaskIntoConstraints="NO" id="ANu-va-GVW">
+                                <rect key="frame" x="0.0" y="62" width="320" height="247"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Caption" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wrh-DR-GfN">
+                                <rect key="frame" x="20" y="317" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -43,7 +53,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="captionField" destination="Wrh-DR-GfN" id="K6a-ci-jsC"/>
                         <outlet property="cloudButton" destination="XGQ-Lt-FLW" id="9Ms-tQ-rTh"/>
+                        <outlet property="imgView" destination="ANu-va-GVW" id="GTW-k4-YN8"/>
                         <outlet property="listButton" destination="toe-MY-NoJ" id="xWk-cm-jap"/>
                         <outlet property="textView" destination="4Rd-FY-trO" id="gsa-tH-SAZ"/>
                         <segue destination="yrv-YQ-5hB" kind="push" identifier="listSegue" id="oeL-Ka-Z0U"/>
@@ -78,7 +90,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <accessibility key="accessibilityConfiguration">
+                                <accessibility key="accessibilityConfiguration" label="Note Name">
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                             </tableViewCell>
@@ -124,6 +136,7 @@
     <resources>
         <image name="Cloud" width="29" height="25"/>
         <image name="Plus" width="25" height="25"/>
+        <image name="cameraGridSelected" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

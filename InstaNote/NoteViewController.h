@@ -12,11 +12,13 @@
 #import "DBCameraViewController.h"
 #import "DBCameraContainer.h"
 
-@interface NoteViewController : UIViewController <UITextViewDelegate, DBCameraViewControllerDelegate>
+@interface NoteViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, DBCameraViewControllerDelegate>
 
 - (IBAction)listTapped:(id)sender;
 - (IBAction)cloudTapped:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UITextField *captionField;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) DBFile *file;
 
